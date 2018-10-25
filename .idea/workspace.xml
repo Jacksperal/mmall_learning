@@ -6,7 +6,40 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cef6e44d-ac73-4a28-86ca-64cbb3ba8545" name="Default Changelist" comment="" />
+    <list default="true" id="cef6e44d-ac73-4a28-86ca-64cbb3ba8545" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/dao/CartMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/dao/CategoryMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/dao/OrderItemMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/dao/OrderMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/dao/PayInfoMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/dao/ProductMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/dao/ShippingMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/dao/UserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/pojo/Cart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/pojo/Category.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/pojo/Order.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/pojo/OrderItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/pojo/PayInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/pojo/Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/pojo/Shipping.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mmall/pojo/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/generatorConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jdbc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mappers/CartMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mappers/CategoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mappers/OrderItemMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mappers/OrderMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mappers/PayInfoMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mappers/ProductMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mappers/ShippingMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mappers/UserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mmall.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring/spring-dao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring/spring-service.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring/spring-web.xml" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -118,20 +151,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mmall/dao/CartMapper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
-              <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitigore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -215,7 +239,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="258" />
     <option name="y" value="90" />
     <option name="width" value="1320" />
@@ -269,7 +293,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540472078794" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540473613710" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -388,12 +412,12 @@
       <workItem from="1540360977283" duration="19808000" />
       <workItem from="1540429922475" duration="5346000" />
       <workItem from="1540435722775" duration="73000" />
-      <workItem from="1540435865541" duration="14690000" />
+      <workItem from="1540435865541" duration="15768000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42973000" />
+    <option name="totallyTimeSpent" value="44051000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -405,9 +429,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="258" y="90" width="1320" height="772" extended-state="0" />
+    <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23888889" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16593164" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -424,7 +448,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3283582" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3283582" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4984127" visible="true" weight="0.19706841" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4984127" visible="true" weight="0.3763326" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50158733" side_tool="true" weight="0.49361023" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3290735" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.3299712" />
@@ -787,20 +811,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mmall/dao/CartMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mmall.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitigore">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="304">
+          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mmall/dao/CartMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
         </state>
       </provider>
     </entry>
