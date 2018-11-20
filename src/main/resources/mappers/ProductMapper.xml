@@ -2,22 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mmall.dao.ProductMapper" >
   <resultMap id="BaseResultMap" type="com.mmall.pojo.Product" >
-    <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="category_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="product_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="subtitle" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="main_image" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="detail" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
-      <arg column="stock" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-    </constructor>
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.mmall.pojo.Product" >
-    <constructor >
+    <constructor>
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="category_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="product_name" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -33,17 +18,12 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, category_id, product_name, subtitle, main_image, detail, price, stock, status, 
+    id, category_id, product_name, subtitle, main_image,sub_image ,detail, price, stock, status,
     create_time, update_time
   </sql>
-  <sql id="Blob_Column_List" >
-    sub_image
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from mmall_product
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -58,7 +38,7 @@
       create_time, update_time, sub_image
       )
     values (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, 
-      #{subtitle,jdbcType=VARCHAR}, #{mainImage,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, 
+      #{subtitle,jdbcType=VARCHAR}, #{mainImage,jdbcType=VARCHAR},#{detail,jdbcType=VARCHAR},
       #{price,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
       now(), now(), #{subImage,jdbcType=LONGVARCHAR}
       )
@@ -169,9 +149,6 @@
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="updateTime != null" >
         update_time = now(),
       </if>
@@ -179,21 +156,6 @@
         sub_image = #{subImage,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mmall.pojo.Product" >
-    update mmall_product
-    set category_id = #{categoryId,jdbcType=INTEGER},
-      product_name = #{productName,jdbcType=VARCHAR},
-      subtitle = #{subtitle,jdbcType=VARCHAR},
-      main_image = #{mainImage,jdbcType=VARCHAR},
-      detail = #{detail,jdbcType=VARCHAR},
-      price = #{price,jdbcType=DECIMAL},
-      stock = #{stock,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = now(),
-      sub_image = #{subImage,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.mmall.pojo.Product" >
@@ -206,8 +168,46 @@
       price = #{price,jdbcType=DECIMAL},
       stock = #{stock,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = now()
+      update_time = now(),
+      sub_image = #{subImage,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_product
+    order by id ASC
+  </select>
+
+  <select id="selectByNameAndProductId" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_product
+    <where>
+      <if test="productName != null">
+        and product_name like #{productName}
+      </if>
+      <if test="productId != null">
+        and id = #{productId}
+      </if>
+    </where>
+    order by id ASC
+  </select>
+
+  <select id="selectByNameAndCategoryIds" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from mmall_product
+    where status=1
+    <if test="productName!=null">
+      and product_name like #{productName}
+    </if>
+    <if test="categoryIdList!=null">
+      and category_id in 
+      <foreach item="item" index="index" collection="categoryIdList" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+  </select>
 </mapper>

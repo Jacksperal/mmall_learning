@@ -48,14 +48,14 @@
     <mvc:default-servlet-handler/>
 
     <!--3:jsp显示ViewResolver-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-       <!---->
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+       &lt;!&ndash;&ndash;&gt;
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <!--前缀-->
+        &lt;!&ndash;前缀&ndash;&gt;
         <property name="prefix" value="/WEB-INF/jsp/"/>
-        <!--结尾-->
+        &lt;!&ndash;结尾&ndash;&gt;
         <property name="suffix" value=".jsp"/>
-    </bean>
+    </bean>-->
 
     <!--4:扫描web相关的bean-->
     <context:component-scan base-package="com.mmall.controller"></context:component-scan>

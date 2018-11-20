@@ -24,9 +24,9 @@
         <!-- 初始化连接大小 -->
         <property name="initialSize" value="1" />
         <!-- 连接池最大使用连接数量 -->
-        <property name="maxActive" value="1500" />
+        <property name="maxActive" value="300" />
         <!-- 连接池最小空闲 -->
-        <property name="minIdle" value="0" />
+        <property name="minIdle" value="100" />
         <!-- 获取连接最大等待时间 -->
         <property name="maxWait" value="60000" />
 
@@ -35,7 +35,7 @@
             name="maxPoolPreparedStatementPerConnectionSize" value="33" /> -->
 
         <!-- 验证数据库连接有效性，要求查询语句 -->
-        <property name="validationQuery" value="${validationQuery}" />
+        <property name="validationQuery" value="SELECT 1" />
         <!-- 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。 -->
         <property name="testWhileIdle" value="true" />
         <!-- 申请连接时执行validationQuery检测连接是否有效，配置true会降低性能。 -->
