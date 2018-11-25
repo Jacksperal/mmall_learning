@@ -11,6 +11,10 @@ public class Const {
 
     public static final String USERNAME = "username";
 
+    public interface RedisCacheExtime {
+        //session超时时间30分钟
+        int REDIS_SESSSION_ETIME = 60 * 30;
+    }
 
     public interface ProductListOrderBy {
         Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc", "price_asc");
@@ -75,9 +79,9 @@ public class Const {
             return code;
         }
 
-        public static OrderStatusEnum codeOf(int code){
-            for(OrderStatusEnum orderStatusEnum:values()){
-                if(orderStatusEnum.getCode() == code){
+        public static OrderStatusEnum codeOf(int code) {
+            for (OrderStatusEnum orderStatusEnum : values()) {
+                if (orderStatusEnum.getCode() == code) {
                     return orderStatusEnum;
                 }
             }

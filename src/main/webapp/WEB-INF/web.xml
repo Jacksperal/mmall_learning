@@ -30,6 +30,17 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>-->
 
+  <!--二期新增重置session时间的filter-->
+  <filter>
+    <filter-name>sessionExpireFilter</filter-name>
+    <filter-class>com.mmall.controller.common.SessionExpireFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>sessionExpireFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+
+
   <servlet>
     <servlet-name>mmall-dispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
