@@ -11,6 +11,8 @@ public class Const {
 
     public static final String USERNAME = "username";
 
+    public static final String TOKEN_PREFIX = "token_";
+
     public interface RedisCacheExtime {
         //session超时时间30分钟
         int REDIS_SESSSION_ETIME = 60 * 30;
