@@ -30,6 +30,9 @@ public class UserManageController {
     public ServerResponse<User> login(String username, String password, HttpSession session, HttpServletResponse res){
         ServerResponse<User> response = iUserService.login(username, password);
         if (response.isSuccess()) {
+
+
+
             User user = response.getData();
             if(user.getRole().intValue() == Const.Role.ROLE_ADMIN){
                 //说明登录的管理员

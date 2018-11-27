@@ -35,7 +35,7 @@ public class OrderManageConrtoller {
                                               @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
                                               @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         //User user = (User) session.getAttribute(Const.CURRENT_USER);
-        String loginToken = CookieUtil.readLoginToken(request);
+        /*String loginToken = CookieUtil.readLoginToken(request);
         if (StringUtils.isEmpty(loginToken)) {
             return ServerResponse.createByErrorMessage("用户未登录,无法获取当前用户的信息");
         }
@@ -49,8 +49,10 @@ public class OrderManageConrtoller {
         if (!response.isSuccess()) {
             //不是管理员
             return ServerResponse.createByErrorMessage("无权限操作，需要管理员权限");
-        }
+        }*/
         //是管理员
+
+        //全部通过眼界器验证是否登录以及权限
         return iOrderService.manageList(pageNum, pageSize);
     }
 
@@ -58,7 +60,7 @@ public class OrderManageConrtoller {
     @ResponseBody
     public ServerResponse<OrderVo> orderDetail(HttpServletRequest request, Long orderNo) {
         //User user = (User) session.getAttribute(Const.CURRENT_USER);
-        String loginToken = CookieUtil.readLoginToken(request);
+        /*String loginToken = CookieUtil.readLoginToken(request);
         if (StringUtils.isEmpty(loginToken)) {
             return ServerResponse.createByErrorMessage("用户未登录,无法获取当前用户的信息");
         }
@@ -72,8 +74,10 @@ public class OrderManageConrtoller {
         if (!response.isSuccess()) {
             //不是管理员
             return ServerResponse.createByErrorMessage("无权限操作，需要管理员权限");
-        }
+        }*/
         //是管理员
+
+        //全部通过眼界器验证是否登录以及权限
         return iOrderService.manageDetail(orderNo);
     }
 
@@ -83,7 +87,7 @@ public class OrderManageConrtoller {
                                                 @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
                                                 @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         //User user = (User) session.getAttribute(Const.CURRENT_USER);
-        String loginToken = CookieUtil.readLoginToken(request);
+        /*String loginToken = CookieUtil.readLoginToken(request);
         if (StringUtils.isEmpty(loginToken)) {
             return ServerResponse.createByErrorMessage("用户未登录,无法获取当前用户的信息");
         }
@@ -97,8 +101,11 @@ public class OrderManageConrtoller {
         if (!response.isSuccess()) {
             //不是管理员
             return ServerResponse.createByErrorMessage("无权限操作，需要管理员权限");
-        }
+        }*/
         //是管理员
+
+
+        //全部通过眼界器验证是否登录以及权限
         return iOrderService.manageSearch(orderNo, pageNum, pageSize);
     }
 
@@ -107,7 +114,7 @@ public class OrderManageConrtoller {
     @ResponseBody
     public ServerResponse<String> orderSendGoods(HttpServletRequest request, Long orderNo) {
         //User user = (User) session.getAttribute(Const.CURRENT_USER);
-        String loginToken = CookieUtil.readLoginToken(request);
+        /*String loginToken = CookieUtil.readLoginToken(request);
         if (StringUtils.isEmpty(loginToken)) {
             return ServerResponse.createByErrorMessage("用户未登录,无法获取当前用户的信息");
         }
@@ -121,8 +128,10 @@ public class OrderManageConrtoller {
         if (!response.isSuccess()) {
             //不是管理员
             return ServerResponse.createByErrorMessage("无权限操作，需要管理员权限");
-        }
+        }*/
         //是管理员
+
+        //全部通过眼界器验证是否登录以及权限
         return iOrderService.mangeSendGoods(orderNo);
     }
 }

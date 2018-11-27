@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -47,6 +48,13 @@ public class AuthorityInterceptor implements HandlerInterceptor {
 
             requestParamBuffer.append(key).append("=").append(mapValue);
         }
+        if (StringUtils.equals(className, "UserManageController") && StringUtils.equals(methodName, "login")) {
+            log.info("权限拦截器拦截到请求,className:{},methodName:{}", className, methodName);
+            //如果是拦截到登陆请求,不打印参数,因为参数里有密码,全部会打印到日志中,防止日志泄漏
+            return true;
+        }
+
+        log.info("权限拦截器拦截到请求,className:{},mehtodName:{},param:{}", className, methodName, requestParamBuffer);
 
         User user = null;
         String loginToken = CookieUtil.readLoginToken(httpServletRequest);
@@ -71,8 +79,24 @@ public class AuthorityInterceptor implements HandlerInterceptor {
             PrintWriter writer = httpServletResponse.getWriter();
 
             if (user == null) {
+                //上传由于富文本的控件要求，要特殊处理返回值
+                if (StringUtils.equals(className, "ProductManagerController") && StringUtils.equals(methodName, "richtextImgUpload")) {
+                    Map<String, Object> resultMap = new HashMap<String, Object>();
+                    resultMap.put("success", false);
+                    resultMap.put("msg", "请登录管理员");
+                    writer.print(JsonUtil.obj2String(resultMap));
+                }
+
+
                 writer.print(JsonUtil.obj2String(ServerResponse.createByErrorMessage("拦截器拦截,用户未的登陆")));
-            }else{
+            } else {
+                if (StringUtils.equals(className, "ProductManagerController") && StringUtils.equals(methodName, "richtextImgUpload")) {
+                    Map<String, Object> resultMap = new HashMap<String, Object>();
+                    resultMap.put("success", false);
+                    resultMap.put("msg", "无权限操作");
+                    writer.print(JsonUtil.obj2String(resultMap));
+                }
+
                 writer.write(JsonUtil.obj2String(ServerResponse.createByErrorMessage("拦截器拦截,不是管理员")));
             }
             writer.flush();
