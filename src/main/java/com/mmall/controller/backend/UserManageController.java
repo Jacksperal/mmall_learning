@@ -18,14 +18,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping(value="/manager/user")
+@RequestMapping(value="/manage/user")
 public class UserManageController {
 
     @Autowired
     @Qualifier("iUserService")
     private IUserService iUserService;
 
-    @RequestMapping(value="/login.do",method= RequestMethod.POST)
+    @RequestMapping(value="/login.do",method= RequestMethod.GET)
     @ResponseBody
     public ServerResponse<User> login(String username, String password, HttpSession session, HttpServletResponse res){
         ServerResponse<User> response = iUserService.login(username, password);
