@@ -6,7 +6,7 @@ import com.mmall.pojo.User;
 import com.mmall.service.IUserService;
 import com.mmall.util.CookieUtil;
 import com.mmall.util.JsonUtil;
-import com.mmall.util.RedisPoolUtil;
+import com.mmall.util.RedisShardedPoolUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -35,7 +35,7 @@ public class UserManageController {
                 //说明登录的管理员
                 //session.setAttribute(Const.CURRENT_USER, user);
                 CookieUtil.writeLoginToken(res, session.getId());
-                RedisPoolUtil.setex(session.getId(), JsonUtil.obj2String(response.getData()), Const.RedisCacheExtime.REDIS_SESSSION_ETIME);
+                RedisShardedPoolUtil.setex(session.getId(), JsonUtil.obj2String(response.getData()), Const.RedisCacheExtime.REDIS_SESSSION_ETIME);
             }else{
                 return ServerResponse.createByErrorMessage("不是管理员,无法登录");
             }

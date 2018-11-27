@@ -59,6 +59,7 @@
 
     <!--4:扫描web相关的bean-->
     <context:component-scan base-package="com.mmall.controller"></context:component-scan>
+    <context:component-scan base-package="com.mmall.common"></context:component-scan>
 
     <!--上传功能配置 200*1024*1024即200M resolveLazily属性启用视为了推迟文件解析，以便捕获文件大小异常-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
