@@ -39,7 +39,7 @@ public class CloseOrderTask {
         }
 
         int hour = Integer.parseInt(MyPropertiesUtil.getProperty("close.order.task.time.hour", "2"));
-        iOrderService.closeOrder(hour);
+        //iOrderService.closeOrder(hour);
         log.info("关闭订单定时任务结束");
     }
 

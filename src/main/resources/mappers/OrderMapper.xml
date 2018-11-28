@@ -247,6 +247,6 @@
     <update id="closeOrderByOrderId" parameterType="java.lang.Integer">
         update mmall_order
         set status=0
-        where order_id=#{orderId}
+        where id=#{orderId}
     </update>
 </mapper>
