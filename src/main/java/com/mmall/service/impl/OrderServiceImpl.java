@@ -25,6 +25,7 @@ import com.mmall.vo.OrderItemVo;
 import com.mmall.vo.OrderProductVo;
 import com.mmall.vo.OrderVo;
 import com.mmall.vo.ShippingVo;
+import org.apache.commons.lang.time.DateUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -538,18 +539,42 @@ public class OrderServiceImpl implements IOrderService {
         return ServerResponse.createBySuccess(pageInfo);
     }
 
-    public ServerResponse<String> mangeSendGoods(Long orderNo){
+    public ServerResponse<String> mangeSendGoods(Long orderNo) {
         Order order = orderMapper.selectByOrderNo(orderNo);
-        if(order == null){
+        if (order == null) {
             ServerResponse.createByErrorMessage("该订单不存在");
         }
-        if(order.getStatus() == Const.OrderStatusEnum.PAID.getCode()){
+        if (order.getStatus() == Const.OrderStatusEnum.PAID.getCode()) {
             order.setStatus(Const.OrderStatusEnum.SHIPPING.getCode());
             order.setSendTime(new Date());
             orderMapper.updateByPrimaryKeySelective(order);
             return ServerResponse.createBySuccess("发货成功");
         }
         return ServerResponse.createByErrorMessage("该订单未付款");
+    }
+
+    @Override
+    public void closeOrder(int hour) {
+        Date closeDateTime = DateUtils.addHours(new Date(), -hour);
+        List<Order> orderList = orderMapper.selectOrderStatusByCreateTime(Const.OrderStatusEnum.NO_PAY.getCode(), DateTimeUtil.dateToStr(closeDateTime));
+        for (Order order : orderList) {
+            List<OrderItem> orderItemList = orderItemMapper.selectByOrderNo(order.getOrderNo());
+            for (OrderItem orderItem : orderItemList) {
+                //一定要用主键where条件,防止锁表,同时必须是支持MySQL的InnoDB
+                Integer stock = productMapper.selectStockByProductId(orderItem.getProductId());
+                //考虑到已生成的订单里的商品,被删除的情况
+                if (stock == null) {
+                    continue;
+                }
+                Product product = new Product();
+                product.setId(orderItem.getId());
+                product.setStock(stock + orderItem.getQuantity());
+                productMapper.updateByPrimaryKeySelective(product);
+            }
+            orderMapper.closeOrderByOrderId(order.getId());
+            logger.info("关闭订单OrderNo:{}", order.getOrderNo());
+        }
+
     }
 
 

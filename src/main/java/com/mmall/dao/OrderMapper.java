@@ -18,7 +18,7 @@ public interface OrderMapper {
 
     int updateByPrimaryKey(Order record);
 
-    Order selectByUserIdAndOrderNo(@Param("userId") Integer userId,@Param("orderNo") Long orderNo);
+    Order selectByUserIdAndOrderNo(@Param("userId") Integer userId, @Param("orderNo") Long orderNo);
 
     Order selectByOrderNo(Long orderNo);
 
@@ -27,4 +27,9 @@ public interface OrderMapper {
     List<Order> selectAll();
 
     List<Order> searchByOrderNo(String orderNo);
+
+    //二期新增定时关单
+    List<Order> selectOrderStatusByCreateTime(@Param("status") Integer status, @Param("date") String date);
+
+    int closeOrderByOrderId(Integer orderId);
 }

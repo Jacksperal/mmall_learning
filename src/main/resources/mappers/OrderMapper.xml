@@ -235,4 +235,18 @@
         where order_no like #{orderNo}
         order by create_time desc
     </select>
+
+    <select id="selectOrderStatusByCreateTime" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from mmall_order
+        where status=#{status} and create_time<![CDATA[<=]]>#{date}
+        order by create_time desc
+    </select>
+
+    <update id="closeOrderByOrderId" parameterType="java.lang.Integer">
+        update mmall_order
+        set status=0
+        where order_id=#{orderId}
+    </update>
 </mapper>
