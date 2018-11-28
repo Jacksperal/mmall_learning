@@ -15,8 +15,10 @@
     http://www.alibaba.com/schema/stat.xsd">
 
     <!-- 扫描service包下所有使用注解类型 -->
-    <context:component-scan base-package="com.mmall.service"></context:component-scan>
+    <context:component-scan base-package="com.mmall.task"></context:component-scan>
 
+    <!--二期新增spring schedule的时候新增的-->
+    <task:annotation-driven/>
 
 
     <!-- 配置事务管理器 -->

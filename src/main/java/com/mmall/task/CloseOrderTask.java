@@ -28,7 +28,7 @@ public class CloseOrderTask {
     @Scheduled(cron = "0 */1 * * * ?")//每个1分钟的整数倍
     public void closeOrderTaskV2() {
         log.info("关闭订单定时任务启动");
-        long lockTimeout = Long.parseLong(MyPropertiesUtil.getProperty("lock.timeout"),5000);
+        long lockTimeout = Long.parseLong(MyPropertiesUtil.getProperty("lock.timeout","5000"));
 
         Long setnxResult = RedisShardedPoolUtil.setnx(Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK, String.valueOf(System.currentTimeMillis() + lockTimeout));
         if(setnxResult != null && setnxResult == 1){
@@ -47,7 +47,7 @@ public class CloseOrderTask {
         RedisShardedPoolUtil.expire(lockName,50);//设置有效期50秒,防止死锁
         log.info("获取{},ThreadName:{}",Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK,Thread.currentThread().getName());
         int hour = Integer.parseInt(MyPropertiesUtil.getProperty("close.order.task.time.hour", "2"));
-        iOrderService.closeOrder(hour);
+        //iOrderService.closeOrder(hour);
         RedisShardedPoolUtil.del(lockName);
         log.info("释放{},ThreadName:{}",Const.REDIS_LOCK.CLOSE_ORDER_TASK_LOCK,Thread.currentThread().getName());
         log.info("========================");
